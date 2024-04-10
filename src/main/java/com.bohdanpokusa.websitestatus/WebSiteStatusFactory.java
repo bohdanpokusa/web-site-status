@@ -18,7 +18,6 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 
-import static com.intellij.openapi.components.ServiceManager.getService;
 
 public class WebSiteStatusFactory implements StatusBarWidgetFactory {
     private static final String ID = "WebSiteStatus";
@@ -72,7 +71,7 @@ public class WebSiteStatusFactory implements StatusBarWidgetFactory {
 
         @Override
         public @NotNull String getTooltipText() {
-            if (getService(PluginSettings.class).serviceRunning) {
+            if (ApplicationManager.getApplication().getService(PluginSettings.class).serviceRunning) {
                 return WebSiteStatusService.isWebSiteReachable() ?
                         "Web site up" :
                         "Web site down";
@@ -88,7 +87,7 @@ public class WebSiteStatusFactory implements StatusBarWidgetFactory {
 
         @Override
         public @NotNull Icon getIcon() {
-            if (getService(PluginSettings.class).serviceRunning) {
+            if (ApplicationManager.getApplication().getService(PluginSettings.class).serviceRunning) {
                 return WebSiteStatusService.isWebSiteReachable() ? AllIcons.Debugger.ThreadStates.Idle : AllIcons.General.Error;
             } else {
                 return AllIcons.Actions.Cancel;
