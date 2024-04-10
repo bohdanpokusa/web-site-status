@@ -1,19 +1,17 @@
 package com.bohdanpokusa.websitestatus.ui;
 
 
-
 import com.bohdanpokusa.websitestatus.core.PluginSettings;
+import com.intellij.openapi.application.ApplicationManager;
 
 import javax.swing.*;
-
-import static com.intellij.openapi.components.ServiceManager.getService;
 
 public class SettingsUi {
     private JPanel settingsPanel;
     private JTextField webSiteUrl;
     private JRadioButton runStatusServiceRadioButton;
     private JTextField updateInterval;
-    private final PluginSettings pluginSettings = getService(PluginSettings.class);
+    private final PluginSettings pluginSettings = ApplicationManager.getApplication().getService(PluginSettings.class);
 
     public SettingsUi() {
         webSiteUrl.setText(pluginSettings.webSiteUrl);

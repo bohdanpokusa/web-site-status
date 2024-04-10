@@ -12,12 +12,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import static com.intellij.openapi.components.ServiceManager.getService;
-
 public class WebSiteStatusService {
     public static final Topic<WebSiteStatusService.EnvStatusListener> TOPIC = new Topic<>(WebSiteStatusService.EnvStatusListener.class, Topic.BroadcastDirection.TO_DIRECT_CHILDREN);
     private static boolean reachable = false;
-    private static PluginSettings pluginSettings = getService(PluginSettings.class);
+    private static PluginSettings pluginSettings = ApplicationManager.getApplication().getService(PluginSettings.class);
 
     public static void startService() {
         ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
@@ -47,7 +45,7 @@ public class WebSiteStatusService {
 
     private static boolean getStatus() throws IOException {
         HttpURLConnection connection =
-                (HttpURLConnection) new URL( Objects.requireNonNull(pluginSettings.webSiteUrl)).openConnection();
+                (HttpURLConnection) new URL(Objects.requireNonNull(pluginSettings.webSiteUrl)).openConnection();
         connection.setConnectTimeout(1000);
         connection.setReadTimeout(1000);
         connection.setRequestMethod("HEAD");
@@ -56,18 +54,18 @@ public class WebSiteStatusService {
 
     public static void setWebSiteUrl(String webSiteUrl) {
         pluginSettings.webSiteUrl = webSiteUrl;
-        getService(PluginSettings.class).loadState(pluginSettings);
+        ApplicationManager.getApplication().getService(PluginSettings.class).loadState(pluginSettings);
     }
 
     public static void setServiceRunning(boolean serviceRunning) {
-       pluginSettings.serviceRunning = serviceRunning;
-        getService(PluginSettings.class).loadState(pluginSettings);
+        pluginSettings.serviceRunning = serviceRunning;
+        ApplicationManager.getApplication().getService(PluginSettings.class).loadState(pluginSettings);
         ApplicationManager.getApplication().getMessageBus().syncPublisher(TOPIC).serverStatusUpdated();
     }
 
     public static void setUpdateInterval(int updateInterval) {
-       pluginSettings.updateInterval = updateInterval;
-        getService(PluginSettings.class).loadState(pluginSettings);
+        pluginSettings.updateInterval = updateInterval;
+        ApplicationManager.getApplication().getService(PluginSettings.class).loadState(pluginSettings);
     }
 
     public interface EnvStatusListener extends EventListener {
