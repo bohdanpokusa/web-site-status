@@ -12,14 +12,14 @@ Features
 * Intuitive Interface: Easily set up and configure your website URL within IntelliJ IDEA.
 * Minimalistic Design: Seamlessly integrates into the IntelliJ IDEA status bar without cluttering the interface.
 
-* Installation
+Installation
 
 You can install the WebsiteStatus plugin directly from the JetBrains Plugin Repository:
 
 * Open IntelliJ IDEA.
 * Go to Preferences > Plugins.
 * Click on the Marketplace tab.
-* Search for "WebsiteStatus".
+* Search for "WebSiteStatus".
 * Click the Install button.
 
 Usage
@@ -29,6 +29,7 @@ Usage
 * Enter your website's URL in the designated field.
 * Click OK to apply the changes.
 * The plugin will now monitor your website's availability and display the status in the status bar.
+
 Feedback
 
 We welcome any feedback or suggestions you may have regarding the WebsiteStatus plugin. Feel free to submit your feedback through the [GitHub](https://github.com/bohdanpokusa/web-site-status) repository or [Marketplace](https://plugins.jetbrains.com/plugin/24147-websitestatus).
