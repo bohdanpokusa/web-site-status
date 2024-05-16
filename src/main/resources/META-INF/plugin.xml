@@ -16,6 +16,16 @@
     <description><![CDATA[
    "Plugin for ping your WebSite. You need configure plugin before first start by click on icon in status bar"]]></description>
 
+    <change-notes><![CDATA[
+<h2>New Features</h2>
+<ul>
+  <li>Add update status based on editor focus update</li>
+</ul>
+<h2>Bug Fixes</h2>
+<ul>
+  <li>Fixed bug when update interval change only after ide restart</li>
+</ul>
+]]></change-notes>
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
