@@ -14,6 +14,7 @@ public final class PluginSettings implements PersistentStateComponent<PluginSett
     public String webSiteUrl = "https://yourwebsite.com";
     public int updateInterval = 30;
     public boolean serviceRunning = false;
+    public boolean updateOnFocus = false;
 
     @Override
     @Nullable

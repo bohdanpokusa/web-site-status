@@ -1,7 +1,7 @@
 package com.bohdanpokusa.websitestatus.ui;
 
-import com.intellij.openapi.ui.DialogWrapper;
 import com.bohdanpokusa.websitestatus.core.WebSiteStatusService;
+import com.intellij.openapi.ui.DialogWrapper;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -27,9 +27,10 @@ public class SettingsDialogWrapper extends DialogWrapper {
     }
 
     private void applySettings() {
-        WebSiteStatusService.setServiceRunning(settingsUi.getRunStatusServiceRadioButton().isSelected());
         WebSiteStatusService.setWebSiteUrl(settingsUi.getWebSiteUrl().getText());
         WebSiteStatusService.setUpdateInterval(Integer.parseInt(settingsUi.getUpdateInterval().getText()));
+        WebSiteStatusService.setUpdateOnFocus(settingsUi.getCheckOnFocusChangeRadioButton().isSelected());
+        WebSiteStatusService.setServiceRunning(settingsUi.getRunStatusServiceRadioButton().isSelected());
     }
 
 }

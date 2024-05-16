@@ -1,5 +1,6 @@
 package com.bohdanpokusa.websitestatus;
 
+import com.bohdanpokusa.websitestatus.core.ListenersManager;
 import com.bohdanpokusa.websitestatus.core.PluginSettings;
 import com.bohdanpokusa.websitestatus.core.WebSiteStatusService;
 import com.bohdanpokusa.websitestatus.ui.SettingsDialogWrapper;
@@ -27,6 +28,7 @@ public class WebSiteStatusFactory implements StatusBarWidgetFactory {
         ApplicationManager.getApplication().getMessageBus().connect().subscribe(WebSiteStatusService.TOPIC,
                 () -> updatePlugin());
         WebSiteStatusService.startService();
+        ListenersManager.addFocusChangeListeners();
     }
 
     public static void updatePlugin() {

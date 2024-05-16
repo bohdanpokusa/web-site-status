@@ -11,11 +11,13 @@ public class SettingsUi {
     private JTextField webSiteUrl;
     private JRadioButton runStatusServiceRadioButton;
     private JTextField updateInterval;
+    private JRadioButton checkOnFocusChangeRadioButton;
     private final PluginSettings pluginSettings = ApplicationManager.getApplication().getService(PluginSettings.class);
 
     public SettingsUi() {
         webSiteUrl.setText(pluginSettings.webSiteUrl);
         runStatusServiceRadioButton.setSelected(pluginSettings.serviceRunning);
+        checkOnFocusChangeRadioButton.setSelected(pluginSettings.updateOnFocus);
         updateInterval.setText(Integer.toString(pluginSettings.updateInterval));
     }
 
@@ -29,6 +31,10 @@ public class SettingsUi {
 
     public JTextField getWebSiteUrl() {
         return webSiteUrl;
+    }
+
+    public JRadioButton getCheckOnFocusChangeRadioButton() {
+        return checkOnFocusChangeRadioButton;
     }
 
     public JPanel getSettingsPanel() {
