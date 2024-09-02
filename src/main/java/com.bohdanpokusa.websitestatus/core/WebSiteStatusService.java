@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 public class WebSiteStatusService {
     public static final Topic<WebSiteStatusService.EnvStatusListener> TOPIC = new Topic<>(WebSiteStatusService.EnvStatusListener.class, Topic.BroadcastDirection.TO_DIRECT_CHILDREN);
     private static boolean reachable = false;
-    private static PluginSettings pluginSettings = ApplicationManager.getApplication().getService(PluginSettings.class);
+    private static PluginSettings pluginSettings = ApplicationManager.getApplication().getServiceIfCreated(PluginSettings.class);
     private static final ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
     private static ScheduledFuture scheduledFuture;
 
